@@ -1,43 +1,10 @@
-
 spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  config:
+     import: configserver:http://localhost:8888
   application:
     name: employee-service
-  datasource:
-    url: jdbc:mysql://127.0.0.1:3306/employee_db
-    username: root
-    password: ""
-  jpa:
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    generate-ddl: true
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        globally_quoted_identifiers: true
-        dialect: org.hibernate.dialect.MySQLDialect
-        format_sql: true
-  servlet:
-    multipart:
-      enabled: true
-      max-file-size: 1000MB
-      max-request-size: 1000MB
-  mvc:
-    throw-exception-if-no-handler-found: true
-    async:
-      request-timeout: 3600000
-server:
-  port: 8081
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-
-eureka:
-  instance:
-    ip-address: 192.168.0.99
-    client:
-      serverUrl:
-        defaultZone: http://127.0.0.1:8761/eureka/

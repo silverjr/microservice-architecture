@@ -31,7 +31,21 @@ public class EmployeeServiceImp implements EmployeeService {
     @Override
     public List<EmployeeDto> getAllEmployees() {
         List<Employee> employees = employeeRepository.findAll();
-        return employees.stream().map(AutoEmployeeMapper.MAPPER::mapToEmployeeDto)
+        return employees.stream()
+                .map(employee -> {
+                    String departmentCode = employee.getDepartmentCode();
+                    DepartmentDto departmentDto = openFeignClient.getDepartmentByCode(departmentCode);
+
+                    // Create a new EmployeeDto and set its properties
+                    EmployeeDto employeeDto = new EmployeeDto();
+                    employeeDto.setId(employee.getId());
+                    employeeDto.setFirstName(employee.getFirstName());
+                    employeeDto.setLastName(employee.getLastName());
+                    employeeDto.setEmailAddress(employee.getEmailAddress());
+                    employeeDto.setDepartment(departmentDto);
+
+                    return employeeDto;
+                })
                 .collect(Collectors.toList());
     }
 
@@ -49,7 +63,7 @@ public class EmployeeServiceImp implements EmployeeService {
     /** Function to fetch department information from department service; */
     private DepartmentDto fetchDepartmentDto(String departmentCode) {
         return webClient.get()
-                .uri("http://localhost:8082/api/v1/department/code/" + departmentCode)
+                .uri("http://localhost:8080/department/code/" + departmentCode)
                 .retrieve()
                 .bodyToMono(DepartmentDto.class)
                 .block();

@@ -1,16 +1,17 @@
-package com.employeeservice.dto;
+package com.ntunga.organizationservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmployeeDto {
+public class OrganizationDto {
     private Long id;
-    private String firstName;
-    private String lastName;
-    private String emailAddress;
-    private DepartmentDto department;
+    private String organizationName;
+    private String organizationDescription;
+    private LocalDateTime createdDate;
 }

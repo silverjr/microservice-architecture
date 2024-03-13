@@ -1,38 +1,10 @@
 spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  config:
+    import: configserver:http://localhost:8888
   application:
     name: department-service
-  datasource:
-    url: jdbc:mysql://127.0.0.1:3306/department_db
-    username: root
-    password: ""
-  jpa:
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    generate-ddl: true
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        globally_quoted_identifiers: true
-        dialect: org.hibernate.dialect.MySQLDialect
-        format_sql: true
-
-server:
-  port: 8082
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-
-eureka:
-  instance:
-    ip-address: 192.168.0.99
-    client:
-      server-url:
-        defaultZone: http://127.0.0.1:8761/eureka/
-
-
-
-

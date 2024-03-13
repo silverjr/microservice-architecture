@@ -1,8 +1,8 @@
-package com.employeeservice.controller;
+package com.ntunga.organizationservice.controller;
 
-import com.employeeservice.dto.DepartmentDto;
-import com.employeeservice.dto.EmployeeDto;
-import com.employeeservice.service.EmployeeService;
+
+import com.ntunga.organizationservice.dto.OrganizationDto;
+import com.ntunga.organizationservice.service.OrganizationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -14,82 +14,82 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Tag(
-        name = "REST APIs for Employee Resource"
+        name = "REST APIs for Organization Resource"
 )
 @RestController
 @AllArgsConstructor
-@RequestMapping("/employee")
-public class EmployeeController {
-    private EmployeeService employeeService;
+@RequestMapping("/organization")
+public class OrganizationController {
+    private OrganizationService organizationService;
 
-    //Create Employee
+    //Create Organization
     @Operation(
-            summary = "Create Employee REST API"
+            summary = "Create Organization REST API"
     )
     @ApiResponse(
             responseCode = "201",
             description = "HTTP Status 201 CREATE"
     )
     @PostMapping("/save")
-    public ResponseEntity<String> createEmployee(@RequestBody EmployeeDto employeeDto){
-        employeeService.createEmployee(employeeDto);
-        return ResponseEntity.ok("Employee SAVED Successfully");
+    public ResponseEntity<String> createOrganization(@RequestBody OrganizationDto organizationDto){
+        organizationService.createOrganization(organizationDto);
+        return ResponseEntity.ok("Organization SAVED Successfully");
     }
 
-    //get all Employee
+    //get all Organization
     @Operation(
-            summary = "Get all Employee REST API"
+            summary = "Get all Organization REST API"
     )
     @ApiResponse(
             responseCode = "200",
             description = "HTTP Status 200 Ok"
     )
     @GetMapping("/list")
-    public ResponseEntity<List<EmployeeDto>> getAllEmployees(){
-        List<EmployeeDto> employeeDtoList = employeeService.getAllEmployees();
-        return ResponseEntity.ok(employeeDtoList);
+    public ResponseEntity<List<OrganizationDto>> getAllOrganizations(){
+        List<OrganizationDto> organizationDtoList = organizationService.getAllOrganizations();
+        return ResponseEntity.ok(organizationDtoList);
     }
 
-    //get Employee by id
+    //get Organization by id
     @Operation(
-            summary = "Get all Employee REST API"
+            summary = "Get all Organization REST API"
     )
     @ApiResponse(
             responseCode = "200",
             description = "HTTP Status 200 Ok"
     )
     @GetMapping("/id")
-    public ResponseEntity<EmployeeDto> getEmployeeById(@PathParam("id") Long employeeId){
-        return ResponseEntity.ok(employeeService.getEmployeeById(employeeId));
+    public ResponseEntity<OrganizationDto> getOrganizationById(@PathParam("id") Long organizationId){
+        return ResponseEntity.ok(organizationService.getOrganizationById(organizationId));
     }
 
-    //Update Employee by id
+    //Update Organization by id
     @Operation(
-            summary = "Update Employee REST API"
+            summary = "Update Organization REST API"
     )
     @ApiResponse(
             responseCode = "200",
             description = "HTTP Status 200 Ok"
     )
     @PutMapping("/q")
-    public ResponseEntity<EmployeeDto> updateEmployee(@PathParam("id") Long employeeId, @RequestBody EmployeeDto employeeDto){
-        employeeDto.setId(employeeId);
-        employeeService.updateEmployee(employeeDto);
-        return ResponseEntity.ok(employeeDto);
+    public ResponseEntity<OrganizationDto> updateOrganization(@PathParam("id") Long organizationId, @RequestBody OrganizationDto organizationDto){
+        organizationDto.setId(organizationId);
+        organizationService.updateOrganization(organizationDto);
+        return ResponseEntity.ok(organizationDto);
     }
 
-    //Delete Employee by id
+    //Delete Organization by id
     @Operation(
-            summary = "Delete Employee REST API"
+            summary = "Delete Organization REST API"
     )
     @ApiResponse(
             responseCode = "200",
             description = "HTTP Status 200 Ok"
     )
     @DeleteMapping("/delete")
-    public ResponseEntity<String> deleteEmployee(@PathParam("id") Long employeeId){
-        employeeService.deleteEmployee(employeeId);
-        return ResponseEntity.ok("Employee DELETED Successfully");
+    public ResponseEntity<String> deleteOgarnization(@PathParam("id") Long organizationId){
+        organizationService.deleteOrganization(organizationId);
+        return ResponseEntity.ok("Organization DELETED Successfully");
     }
 
 }

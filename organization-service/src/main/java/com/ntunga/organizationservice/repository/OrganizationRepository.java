@@ -1,7 +1,7 @@
-package com.employeeservice.repository;
+package com.ntunga.organizationservice.repository;
 
-import com.employeeservice.entity.Employee;
+import com.ntunga.organizationservice.entity.Organization;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+public interface OrganizationRepository extends JpaRepository<Organization, Long> {
 }

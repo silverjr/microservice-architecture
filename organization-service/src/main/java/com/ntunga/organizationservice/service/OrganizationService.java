@@ -1,14 +1,13 @@
-package com.employeeservice.service;
+package com.ntunga.organizationservice.service;
 
-import com.employeeservice.dto.DepartmentDto;
-import com.employeeservice.dto.EmployeeDto;
+import com.ntunga.organizationservice.dto.OrganizationDto;
 
 import java.util.List;
 
-public interface EmployeeService {
-    void createEmployee(EmployeeDto employeeDto);
-    List<EmployeeDto> getAllEmployees();
-    EmployeeDto getEmployeeById(Long id);
-    void updateEmployee(EmployeeDto employeeDto);
-    void deleteEmployee(Long id);
+public interface OrganizationService {
+    void createOrganization(OrganizationDto organizationDto);
+    List<OrganizationDto> getAllOrganizations();
+    OrganizationDto getOrganizationById(Long id);
+    void updateOrganization(OrganizationDto organizationDto);
+    void deleteOrganization(Long id);
 }

@@ -1,4 +1,4 @@
-package com.employeeservice.exception;
+package com.ntunga.organizationservice.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

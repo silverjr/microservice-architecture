@@ -51,9 +51,7 @@ public class DepartmentServiceImp implements DepartmentService {
         existingDepartment.setDepartmentDescription(departmentDto.getDepartmentDescription());
         existingDepartment.setDepartmentName(departmentDto.getDepartmentName());
 
-        Department updatedDepartment = departmentRepository.save(existingDepartment);
-        departmentRepository.save(updatedDepartment);
-        return AutoDepartmentMapper.MAPPER.mapToDepartmentDto(existingDepartment);
+        return AutoDepartmentMapper.MAPPER.mapToDepartmentDto(departmentRepository.save(existingDepartment));
     }
 
     @Override

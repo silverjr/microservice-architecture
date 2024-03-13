@@ -1,13 +1,13 @@
-package com.employeeservice.mapper;
+package com.ntunga.organizationservice.mapper;
 
-import com.employeeservice.dto.EmployeeDto;
-import com.employeeservice.entity.Employee;
+import com.ntunga.organizationservice.dto.OrganizationDto;
+import com.ntunga.organizationservice.entity.Organization;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 @Mapper
-public interface AutoEmployeeMapper {
-    AutoEmployeeMapper MAPPER = Mappers.getMapper(AutoEmployeeMapper.class);
-    EmployeeDto mapToEmployeeDto(Employee employee);
-    Employee mapToEmployee(EmployeeDto employeeDto);
+public interface AutoOrganizationMapper {
+    AutoOrganizationMapper MAPPER = Mappers.getMapper(AutoOrganizationMapper.class);
+    OrganizationDto mapToOrganizationDto(Organization organization);
+    Organization mapToOrganization(OrganizationDto organizationDto);
 }
